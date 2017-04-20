@@ -1,10 +1,19 @@
+@import '../assets/css/main.css';
 @import '~animate.css';
+@import '~bulma';
 
 .animated {
   animation-duration: .377s;
 }
 
-@import '~bulma';
+.control.has-icon .icon {
+  color: #dbdbdb;
+  pointer-events: none;
+  position: absolute;
+  top: 0.6rem;
+  z-index: 4;
+  left: 0.4rem;
+}
 
 $fa-font-path: '~font-awesome/fonts/';
 @import '~font-awesome/scss/font-awesome';

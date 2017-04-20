@@ -1,24 +1,29 @@
 <template>
   <div id="app">
-    <navbar :show="true"></navbar>
+    <nav-bar :show="true"></nav-bar>
     <sidebar
-      :show="sidebar.opened && !sidebar.hidden"
+      :show="sidebar.opened"
       :menuItems="menuItems"
     ></sidebar>
-    <router-view></router-view>
+    <app-main></app-main>
+    <footer-bar></footer-bar>
   </div>
 </template>
 
 <script>
   import { mapState, mapMutations } from 'vuex'
   import Sidebar from '../components/Sidebar/Sidebar'
-  import Navbar from '../components/Navbar/Navbar'
+  import NavBar from '../components/NavBar/NavBar'
+  import AppMain from '../components/AppMain/AppMain'
+  import FooterBar from '../components/FooterBar/FooterBar'
 
   export default {
     name: 'app',
     components: {
       Sidebar,
-      Navbar
+      NavBar,
+      AppMain,
+      FooterBar
     },
     computed: {
       ...mapState({
