@@ -1,0 +1,33 @@
+@import '../../assets/scss/colors';
+
+.movie-list {
+  padding: 2rem;
+  ul {
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: repeat(5, auto);
+  }
+  figure {
+    background-color: $color-white;
+
+    img {
+      width: 100%;
+    }
+    figcaption {
+      color: $color-blue;
+      font-size: .9rem;
+      padding: .6rem;
+      text-align: center;
+    }
+  }
+  .no-results {
+    color: $color-black;
+    text-align: center;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .8s
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0
+  }
+}
