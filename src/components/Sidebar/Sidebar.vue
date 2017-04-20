@@ -32,14 +32,20 @@
         </expanding>
       </li>
     </ul>
+    <history></history>
+    <social-sidebar></social-sidebar>
   </aside>
 </template>
 
 <script>
   import Expanding from 'vue-bulma-expanding'
+  import History from '../History/History'
+  import SocialSidebar from './SocialSidebar/SocialSidebar'
 
   export default {
     components: {
+      SocialSidebar,
+      History,
       Expanding
     },
 
