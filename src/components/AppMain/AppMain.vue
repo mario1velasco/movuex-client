@@ -1,7 +1,7 @@
 <template>
   <section class="app-main">
     <div class="container is-fluid is-marginless app-content">
-      <levelbar></levelbar>
+      <level-bar></level-bar>
       <transition
         mode="out-in"
         enter-active-class="fadeIn"
@@ -14,31 +14,14 @@
 </template>
 
 <script>
-import Levelbar from './Levelbar'
+  import LevelBar from '../LevelBar/LevelBar'
 
-export default {
-  components: {
-    Levelbar
+  export default {
+    name: 'app-main',
+    components: {
+      LevelBar
+    }
   }
-}
 </script>
 
-<style lang="scss">
-@import '~bulma/sass/utilities/variables';
-@import '~bulma/sass/utilities/mixins';
-
-.app-main {
-  padding-top: 50px;
-  margin-left: 180px;
-  transform: translate3d(0, 0, 0);
-
-  @include mobile() {
-    margin-left: 0;
-  }
-
-}
-
-.app-content {
-  padding: 20px;
-}
-</style>
+<style lang="scss" src="./AppMain.scss"></style>
