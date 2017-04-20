@@ -1,0 +1,13 @@
+@import '~bulma/sass/utilities/mixins';
+@import '../../assets/scss/colors';
+.history {
+  margin-top: 3vh;
+  color: $color-black;
+  .empty-notes {
+    font-size: 5rem;
+  }
+
+  .no-results {
+    font-size: .9rem;
+  }
+}
