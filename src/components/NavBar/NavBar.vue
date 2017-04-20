@@ -9,7 +9,6 @@
         </div>
         <div class="nav-center">
           <a class="nav-item hero-brand" href="/">
-            <img src="http://fakeimg.pl/250x100/" :alt="pkgInfo.description">
             <tooltip
               :label="`v${pkgInfo.version}`"
               placement="right"
@@ -24,19 +23,22 @@
             </tooltip>
           </a>
         </div>
-        <div class="nav-right is-flex"></div>
+        <div class="nav-right is-column-flex">
+         <social-nav-bar></social-nav-bar>
+        </div>
       </nav>
     </div>
   </section>
 </template>
 
 <script>
-  import * as pkg from '../../../package.json'
   import Tooltip from 'vue-bulma-tooltip'
   import { mapMutations, mapState } from 'vuex'
+  import * as pkg from '../../../package.json'
+  import SocialNavBar from './SocialNavBar/SocialNavBar'
 
   export default {
-    name: 'navbar',
+    name: 'nav-bar',
     data () {
       return {
         pkgInfo: pkg
@@ -48,6 +50,7 @@
       ])
     },
     components: {
+      SocialNavBar,
       Tooltip
     },
     props: {
@@ -61,4 +64,4 @@
   }
 </script>
 
-<style lang="scss" src="./Navbar.scss"></style>
+<style lang="scss" src="./NavBar.scss"></style>
