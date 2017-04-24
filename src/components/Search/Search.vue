@@ -1,5 +1,5 @@
 <template>
-  <form class='search' name='search' v-on:submit.prevent='onSubmit'>
+  <form class='search' name='search' @submit.prevent='onSubmit'>
     <div class="field">
       <p class="control has-icon">
         <input
@@ -16,7 +16,6 @@
         </span>
       </p>
     </div>
-    <p v-show="criteria">Criterio de busqueda: {{ criteria | capitalize }}</p>
   </form>
 </template>
 
@@ -25,19 +24,12 @@
     name: 'search',
     data () {
       return {
-        criteria: undefined
+        criteria: null
       }
     },
     methods: {
       onSubmit () {
-        console.log('search', this.criteria)
-      }
-    },
-    filters: {
-      capitalize: function (value) {
-        if (!value) return ''
-        value = value.toString()
-        return value.charAt(0).toUpperCase() + value.slice(1)
+        this.$emit('search', this.criteria)
       }
     }
   }
