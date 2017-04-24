@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="nav-center">
-          <a class="nav-item hero-brand" href="/">
+          <router-link class="nav-item hero-brand" :to="{name: 'movieList'}">
             <tooltip
               :label="`v${pkgInfo.version}`"
               placement="right"
@@ -21,7 +21,7 @@
                 <span class="vue">Mo</span><strong class="admin">vuex</strong>
               </div>
             </tooltip>
-          </a>
+          </router-link>
         </div>
         <div class="nav-right is-column-flex">
          <social-nav-bar></social-nav-bar>
