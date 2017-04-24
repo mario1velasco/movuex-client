@@ -21,12 +21,11 @@
 </template>
 
 <script>
-  import mocks from '../../mock/films'
   export default {
     name: 'MovieList',
-    data () {
-      return {
-        films: mocks.Search
+    props: {
+      films: {
+        type: Array
       }
     }
   }
