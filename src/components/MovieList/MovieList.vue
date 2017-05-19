@@ -1,7 +1,7 @@
 <template>
   <div class="movie-list">
-    <ul v-if="foundFilms">
-      <li v-for="film in foundFilms">
+    <ul v-if="films">
+      <li v-for="film in films">
         <transition appear name="fade">
           <article>
             <figure>
@@ -23,21 +23,29 @@
 </template>
 
 <script>
-  import mock from '../../mock/films'
+  import { OmdbApiService } from '../../services/TVMazeApiService'
   export default {
     name: 'MovieList',
+    data () {
+      return {
+        films: null
+      }
+    },
     props: {
       criteria: {
-        type: String
+        type: String,
+        default: ''
       },
       prueba: {
         type: String
       }
     },
-    computed: {
-      foundFilms () {
-        const { Search: films } = mock
-        return films.filter(film => film.Title.includes(this.criteria))
+    watch: {
+      criteria (value) {
+        OmdbApiService.getFilms(value)
+          .then((response) => {
+            this.films = response.Search
+          })
       }
     }
   }
