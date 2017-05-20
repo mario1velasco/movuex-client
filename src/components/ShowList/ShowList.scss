@@ -1,11 +1,15 @@
 @import '../../assets/scss/colors';
+@import '~bulma/sass/utilities/mixins';
 
-.movie-list {
+.show-list {
   padding: 2rem;
   ul {
     display: grid;
     grid-gap: 20px;
     grid-template-columns: repeat(5, auto);
+    @include mobile() {
+      grid-template-columns: repeat(2, auto);
+    }
   }
   figure {
     background-color: $color-white;

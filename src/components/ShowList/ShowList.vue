@@ -1,15 +1,15 @@
 <template>
-  <div class="movie-list">
-    <ul v-if="films">
-      <li v-for="film in films">
+  <div class="show-list">
+    <ul v-if="shows">
+      <li v-for="show in shows">
         <transition appear name="fade">
           <article>
             <figure>
-              <router-link :to="{name: 'movie', params: {film: film.imdbID}}">
-                <img v-cloak :src="film.Poster" :alt="film.Title">
+              <router-link :to="{name: 'show', params: {showId: show.id}}">
+                <img v-cloak :src="show.image.medium" :alt="show.name">
               </router-link>
               <figcaption>
-                {{ film.Title }} {{ film.Year }}
+                {{ show.name }} - {{ show.premiered }}
               </figcaption>
             </figure>
           </article>
@@ -23,29 +23,15 @@
 </template>
 
 <script>
-  import { TVMazeApiService } from '../../services'
   export default {
-    name: 'MovieList',
-    data () {
-      return {
-        films: null
-      }
-    },
+    name: 'ShowList',
     props: {
-      criteria: {
-        type: String,
-        default: ''
-      }
-    },
-    watch: {
-      criteria (value) {
-        TVMazeApiService.getFilms(value)
-          .then((response) => {
-            this.films = response.Search
-          })
+      shows: {
+        type: Array,
+        default: []
       }
     }
   }
 </script>
 
-<style lang='scss' src="./MovieList.scss"></style>
+<style lang='scss' src="./ShowList.scss"></style>
