@@ -51,7 +51,7 @@
 </template>
 
 <script>
-  import ShowCard from '../ShowCard/ShowCard'
+  import ShowCard from '../ShowItem/ShowItem'
   export default {
     components: {ShowCard},
     name: 'Show',
