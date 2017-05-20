@@ -1,3 +1,7 @@
+@import "colors";
+@import "defaults";
+
+
 // Text color
 
 // 500
@@ -624,15 +628,6 @@
   border: 1px solid;
   border-color: $grey-50;
 }
-
-.no-radius {
-  @extend %no-radius;
-}
-
-.no-pad {
-  @extend %no-padding;
-}
-
 
 
 $simbol: '\\+';

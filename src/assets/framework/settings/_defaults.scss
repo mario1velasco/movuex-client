@@ -64,49 +64,6 @@ $md-width: 992 * 1px;
 $lg-width: 1200 * 1px;
 
 
-
-
-// == Maps
-
-$map-break-points: (
-        xs-width: $xs-width,
-        sm-width: $sm-width,
-        md-width: $md-width,
-        lg-width: $lg-width
-);
-
-$colors: (
-        'red': $red-800,
-        'pink': $pink,
-        'purple': $purple,
-        'deep-purple': $deep-purple,
-        'indigo': $indigo,
-        'blue': $blue,
-        'light-blue': $light-blue,
-        'cyan' : $cyan ,
-        'teal': $teal,
-        'green': $green,
-        'light-green': $light-green,
-        'lime': $lime,
-        'yellow': $yellow,
-        'amber': $amber,
-        'orange': $orange,
-        'deep-orange': $deep-orange,
-        'brown': $brown,
-        'grey': $grey,
-        'blue-grey': $blue-grey,
-        'black': $black,
-        'white': $white
-);
-$sizes: (
-        'xs': $size-xs,
-        's': $size-s,
-        'm': $size-m,
-        'l': $size-l,
-        'xl': $size-xl
-);
-
-
 /* Coolors Exported Palette - coolors.co/ef476f-087f8c-ffd166-06d6a0-fcfcfc */
 
 $color-red: rgba(239, 71, 111, 1);

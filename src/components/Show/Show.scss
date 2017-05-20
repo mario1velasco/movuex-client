@@ -1,4 +1,5 @@
-@import "../../assets/framework/layout/main";
+@import "../../assets/framework/settings/settings";
+@import "../../assets/framework/tools/tools";
 @include media(xs-width) {
   .media {
     flex-wrap: wrap;
