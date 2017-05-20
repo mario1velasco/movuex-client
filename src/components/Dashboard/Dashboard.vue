@@ -7,24 +7,20 @@
 </template>
 
 <script>
-  import MovieList from '../MovieList/MovieList'
   import Search from '../Search/Search'
-  import mocks from '../../mock/films'
+  import ShowListContainer from '../../containers/ShowListContainer'
+  import ShowContainer from '../../containers/ShowContainer'
   export default {
     name: 'dashboard',
     components: {
       Search,
-      MovieList
-    },
-    data () {
-      return {
-        films: mocks.Search
-      }
+      ShowListContainer,
+      ShowContainer
     },
     methods: {
       onSearch (criteria) {
         this.$router.push({
-          name: 'movieList',
+          name: 'showList',
           query: {
             criteria
           }
