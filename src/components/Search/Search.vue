@@ -5,7 +5,7 @@
         <input
           type='text'
           name='criteria'
-          placeholder='Escribe una película ...'
+          placeholder='Search show ...'
           ref='criteria'
           v-model='criteria'
           autofocus
