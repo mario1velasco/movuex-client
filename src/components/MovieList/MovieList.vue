@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import { OmdbApiService } from '../../services/TVMazeApiService'
+  import { TVMazeApiService } from '../../services'
   export default {
     name: 'MovieList',
     data () {
@@ -35,14 +35,11 @@
       criteria: {
         type: String,
         default: ''
-      },
-      prueba: {
-        type: String
       }
     },
     watch: {
       criteria (value) {
-        OmdbApiService.getFilms(value)
+        TVMazeApiService.getFilms(value)
           .then((response) => {
             this.films = response.Search
           })
