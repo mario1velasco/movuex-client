@@ -1,89 +1,71 @@
 <template>
-  <div class="movie" v-if='movie'>
-    <img v-if='movie.Poster != "N/A"'
-         :src="movie.Poster"
-         :alt="`${movie.Title} poster`" class="poster">
-    <div class="data">
-      <h2>
-        {{ movie.Title }}
-      </h2>
-      <p class="plot">
-        {{ movie.Plot }}
-      </p>
 
-      <aside class="movie-data">
-        <dl>
-          <dt>
-            Genre
-          </dt>
-          <dd>
-            {{ movie.Genre }}
-          </dd>
-          <dt>
-            Year
-          </dt>
-
-          <dd>
-            {{ movie.Year }}
-          </dd>
-
-          <dt>
-            Director
-          </dt>
-          <dd>
-            {{ movie.Director }}
-          </dd>
-
-          <dt>
-            Actors
-          </dt>
-
-          <dd>
-            {{ movie.Actors }}
-          </dd>
-
-          <dt>
-            Runtime
-          </dt>
-
-          <dd>
-            {{ movie.Runtime }}
-          </dd>
-          <dt>
-            Rating
-          </dt>
-
-          <dd>
-            {{ movie.imdbRating }}
-          </dd>
-
-        </dl>
-
-      </aside>
+  <div class="box">
+    <article class="media">
+      <div class="media-left">
+        <figure class="image is-128x128">
+          <img v-if='show.image && show.image.original'
+               :src="show.image.original"
+               :alt="`${show.name} poster`" class="poster">
+        </figure>
+      </div>
+      <div class="media-content">
+        <div class="content">
+          <h3>{{show.name}}</h3>
+          <div class="sumary" v-html="show.summary"></div>
+          <p>
+            <small>Genres: {{ getGenres(show.genres) }}</small>
+          </p>
+          <p>
+            <small>Airs on: {{ show.network.country.name }} - {{ show.network.name }} </small>
+          </p>
+          <p>
+            <small>Schedule: {{ show.schedule.days[0] }} - {{ show.schedule.time }} </small>
+          </p>
+          <p>
+            <small>Status: {{ show.status }} </small>
+          </p>
+          <p>
+            <small>Show type: {{ show.type }} </small>
+          </p>
+        </div>
+        <nav class="level is-mobile">
+          <div class="level-left">
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-reply"></i></span>
+            </a>
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-retweet"></i></span>
+            </a>
+            <a class="level-item">
+              <span class="icon is-small"><i class="fa fa-heart"></i></span>
+            </a>
+          </div>
+        </nav>
+      </div>
+    </article>
+    <div v-if="!show" class="column">
+      Show no encontrado
     </div>
   </div>
 </template>
 
 <script>
-  import mock from '../../mock/films'
+  import ShowCard from '../ShowCard/ShowCard'
   export default {
-    name: 'Movie',
+    components: {ShowCard},
+    name: 'Show',
     props: {
-      film: {
-        type: String,
-        require: true
+      show: {
+        type: Object
       }
     },
-    created () {
-      this.getFilm()
-      console.log(this.film)
-    },
     methods: {
-      getFilm () {
-        this.movie = mock.Search.find(f => f.imdbID === this.film)
+      getGenres (genres) {
+        return genres.join(', ')
       }
     }
   }
 </script>
 
-<style lang='scss' src="./Movie.scss"></style>
+<style lang='scss' src="./Show.scss"></style>
