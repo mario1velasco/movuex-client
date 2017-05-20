@@ -23,6 +23,7 @@
 </script>
 <style lang="scss" scoped>
   .social {
+    text-align: center;
     position: absolute;
     bottom: 1vh;
     width: 100%;
