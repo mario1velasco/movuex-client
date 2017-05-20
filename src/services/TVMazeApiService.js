@@ -1,15 +1,25 @@
-import { HttpService } from './HttpService'
+import { tvmaze } from 'tvmaze-zucchinidev'
 
 export class TVMazeApiService {
-  static get http () {
-    return HttpService
+  static parseResponse ({body}) {
+    return body
   }
 
-  static getFilms (criteria) {
-    return TVMazeApiService.http.get(TVMazeApiService.getUrl(criteria))
+  constructor (tvmazeClient = tvmaze.createClient()) {
+    this.client = tvmazeClient
   }
 
-  static getUrl (criteria) {
-    return `${TVMazeApiService.http.getBaseUrl()}${criteria}`
+  searchShows (criteria) {
+    return this.client.search(criteria)
+      .then(TVMazeApiService.parseResponse)
+      .then(shows => shows.filter(s => s.show.image !== null).map(s => s.show))
+  }
+
+  getShow (showId) {
+    return this.client.show(showId).then(TVMazeApiService.parseResponse)
+  }
+
+  shows () {
+    return this.client.shows().then(TVMazeApiService.parseResponse)
   }
 }
