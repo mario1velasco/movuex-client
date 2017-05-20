@@ -6,14 +6,18 @@
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
-    "start": "node build/dev-server.js",
+    "start": "npm run node-path && node build/dev-server.js",
+    "start-pm2": "npm run node-path && pm2 start build/dev-server.js --name client",
     "build": "node build/build.js",
     "unit": "cross-env BABEL_ENV=test karma start test/unit/karma.conf.js --single-run",
     "e2e": "node test/e2e/runner.js",
     "test": "npm run unit && npm run e2e",
-    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs"
+    "lint": "eslint --ext .js,.vue src test/unit/specs test/e2e/specs",
+    "node-path": ". ./bash/node_path.sh"
   },
   "dependencies": {
+    "pm2": "^2.4.6",
+    "socket.io-client": "^2.0.1",
     "tvmaze-zucchinidev": "0.0.4",
     "vue": "^2.2.6",
     "vue-router": "^2.3.1",
