@@ -3,16 +3,7 @@
     <ul v-if="shows">
       <li v-for="show in shows">
         <transition appear name="fade">
-          <article>
-            <figure>
-              <router-link :to="{name: 'show', params: {showId: show.id}}">
-                <img v-cloak :src="show.image.medium" :alt="show.name">
-              </router-link>
-              <figcaption>
-                {{ show.name }} - {{ show.premiered }}
-              </figcaption>
-            </figure>
-          </article>
+          <show-item :show="show"></show-item>
         </transition>
       </li>
     </ul>
@@ -23,7 +14,9 @@
 </template>
 
 <script>
+  import ShowItem from '../ShowItem/ShowItem'
   export default {
+    components: {ShowItem},
     name: 'ShowList',
     props: {
       shows: {
