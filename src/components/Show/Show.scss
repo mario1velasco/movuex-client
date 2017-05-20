@@ -1,0 +1,9 @@
+@media (max-width: 420px) {
+  .media {
+    flex-wrap: wrap;
+    .media-left {
+      flex-shrink: 1;
+      margin-right: 0;
+    }
+  }
+}
