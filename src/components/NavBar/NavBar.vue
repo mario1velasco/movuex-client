@@ -8,7 +8,7 @@
           </a>
         </div>
         <div class="nav-center">
-          <router-link class="nav-item hero-brand" :to="{name: 'movieList'}">
+          <router-link class="nav-item hero-brand" :to="{name: 'showList'}">
             <tooltip
               :label="`v${pkgInfo.version}`"
               placement="right"
