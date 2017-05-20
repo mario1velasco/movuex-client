@@ -1,5 +1,5 @@
 <template>
-  <router-link :to="{ name: 'movieList' }">
+  <router-link :to="{ name: 'showList' }">
     Go Back
   </router-link>
 </template>
