@@ -43,6 +43,7 @@
   import SocialSidebar from './SocialSidebar/SocialSidebar'
 
   export default {
+    name: 'sidebar',
     components: {
       SocialSidebar,
       History,
