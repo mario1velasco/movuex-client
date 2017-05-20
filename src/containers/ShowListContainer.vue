@@ -1,33 +1,50 @@
 <template>
-  <show
-    :show="show"
-    v-if="show"
-  ></show>
+  <show-list
+    :shows="shows"
+  ></show-list>
 </template>
 
 <script>
-  import Show from '../components/Show/Show'
   import { TVMazeApiService } from '../services'
+  import ShowList from '../components/ShowList/ShowList'
   export default {
-    components: {Show},
-    name: 'ShowContainer',
-    props: {
-      showId: {
-        type: String,
-        require: true
-      }
+    components: {
+      ShowList
     },
+    name: 'ShowListContainer',
     data () {
       return {
-        show: null,
+        shows: null,
         service: null
       }
     },
+    props: {
+      criteria: String
+    },
+    watch: {
+      criteria (value) {
+        console.log(value)
+        this.searchShows(value)
+      }
+    },
     created () {
-      this.service = new TVMazeApiService()
-      this.service.getShow(this.showId).then(response => {
-        this.show = response
-      })
+      this.initService()
+      this.initShows()
+    },
+    methods: {
+      initService () {
+        this.service = new TVMazeApiService()
+      },
+      initShows () {
+        this.service.shows().then(response => {
+          this.shows = response
+        })
+      },
+      searchShows (criteria) {
+        this.service.searchShows(criteria).then(response => {
+          this.shows = response
+        })
+      }
     }
   }
 </script>
