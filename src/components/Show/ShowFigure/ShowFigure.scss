@@ -1,4 +1,5 @@
-@media (max-width: 420px) {
+@import "../../../assets/framework/layout/main";
+@include media(xs-width) {
   figure.image.is-128x128 {
     height: auto;
     width: 100%;

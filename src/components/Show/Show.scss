@@ -1,4 +1,5 @@
-@media (max-width: 420px) {
+@import "../../assets/framework/layout/main";
+@include media(xs-width) {
   .media {
     flex-wrap: wrap;
     .media-left {

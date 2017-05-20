@@ -1,6 +1,6 @@
-@import '../assets/css/main.css';
 @import '~animate.css';
 @import '~bulma';
+@import '../assets/framework/layout/main';
 
 .animated {
   animation-duration: .377s;
@@ -15,8 +15,6 @@
   left: 0.4rem;
 }
 
-$fa-font-path: '~font-awesome/fonts/';
-@import '~font-awesome/scss/font-awesome';
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
