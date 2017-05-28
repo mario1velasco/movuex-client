@@ -5,7 +5,9 @@
         <span class="icon is-small"><i class="fa fa-retweet"></i></span>
       </a>
       <a class="level-item">
-        <span class="icon is-small"><i class="fa fa-heart"></i></span>
+        <span class="icon is-small" @click="onHeartClick">
+          <i ref="heart" class="fa fa-heart"></i>
+        </span>
       </a>
     </div>
   </nav>
@@ -17,6 +19,12 @@
     props: {
       show: {
         type: Object
+      }
+    },
+    methods: {
+      onHeartClick () {
+        this.$refs.heart.classList.add('clicked')
+        this.$emit('vote')
       }
     }
   }

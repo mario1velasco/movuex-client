@@ -5,7 +5,7 @@
         <show-figure :show="show"></show-figure>
       </div>
       <div class="media-content">
-        <show-content :show="show"></show-content>
+        <show-content @vote="onVote" :show="show"></show-content>
       </div>
     </article>
     <show-not-found v-if="!show"></show-not-found>
@@ -18,6 +18,9 @@
   import ShowContent from './ShowContent/ShowContent'
   import ShowFigure from './ShowFigure/ShowFigure'
   import ShowNotFound from './ShowNotFound/ShowNotFound'
+  import { mapActions } from 'vuex'
+  import { RealTimeService } from '../../services/'
+
   export default {
     components: {
       ShowNotFound,
@@ -31,6 +34,21 @@
       show: {
         type: Object
       }
+    },
+    methods: {
+      ...mapActions([
+        'addVote'
+      ]),
+      onVote () {
+        this.addVote(this.show)
+      },
+      initSocket () {
+        const service = RealTimeService.getInstance()
+        service.onAddedVote().then(_ => console.log(_))
+      }
+    },
+    created () {
+      this.initSocket()
     }
   }
 </script>
