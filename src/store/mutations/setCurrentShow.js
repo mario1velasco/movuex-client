@@ -1,3 +1,3 @@
-export const setShows = (state, shows) => {
-  state.shows = shows
+export const setCurrentShow = (state, show) => {
+  state.show = show
 }
