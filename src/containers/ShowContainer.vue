@@ -7,7 +7,7 @@
 
 <script>
   import Show from '../components/Show/Show'
-  import { TVMazeApiService } from '../services'
+  import { mapActions, mapState } from 'vuex'
   export default {
     components: {Show},
     name: 'ShowContainer',
@@ -16,17 +16,18 @@
         require: true
       }
     },
-    data () {
-      return {
-        show: null,
-        service: null
-      }
+    computed: {
+      ...mapState([
+        'show'
+      ])
+    },
+    methods: {
+      ...mapActions([
+        'getShow'
+      ])
     },
     created () {
-      this.service = new TVMazeApiService()
-      this.service.getShow(this.showId).then(response => {
-        this.show = response
-      })
+      this.getShow(this.showId)
     }
   }
 </script>
