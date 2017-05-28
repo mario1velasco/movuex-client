@@ -1,5 +1,6 @@
-import { RealTimeService } from '../../services'
-export const addVote = ({commit}, {id}) => {
-  const service = RealTimeService.getInstance()
-  service.addVote(id)
+import { TVMazeApiService } from '../../services'
+export const getShows = ({commit}) => {
+  TVMazeApiService.getShows().then(response => {
+    commit('setShows', response)
+  })
 }
