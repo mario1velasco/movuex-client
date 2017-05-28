@@ -21,9 +21,17 @@ export class RealTimeService {
       throw new Error('Cannot construct a singleton')
     }
     this.socket = socketio(params.realTimeUrl)
-    this.socket.emit('ping')
-    this.socket.on('pong', () => {
-      console.log('pong')
+  }
+
+  addVote (showId) {
+    this.socket.emit('addVote', showId)
+  }
+
+  onAddedVote () {
+    return new Promise((resolve, reject) => {
+      this.socket.on('vote:added', (data) => {
+        resolve(data)
+      })
     })
   }
 }
