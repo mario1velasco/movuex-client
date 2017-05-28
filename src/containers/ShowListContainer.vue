@@ -5,8 +5,9 @@
 </template>
 
 <script>
-  import { TVMazeApiService } from '../services'
   import ShowList from '../components/ShowList/ShowList'
+  import { mapActions, mapState } from 'vuex'
+
   export default {
     components: {
       ShowList
@@ -14,36 +15,32 @@
     name: 'ShowListContainer',
     data () {
       return {
-        shows: null,
         service: null
       }
+    },
+    computed: {
+      ...mapState([
+        'shows'
+      ])
     },
     props: {
       criteria: String
     },
     watch: {
       criteria (value) {
-        console.log(value)
         this.searchShows(value)
       }
     },
     created () {
-      this.initService()
       this.initShows()
     },
     methods: {
-      initService () {
-        this.service = new TVMazeApiService()
-      },
+      ...mapActions([
+        'getShows',
+        'searchShows'
+      ]),
       initShows () {
-        this.service.shows().then(response => {
-          this.shows = response
-        })
-      },
-      searchShows (criteria) {
-        this.service.searchShows(criteria).then(response => {
-          this.shows = response
-        })
+        this.getShows()
       }
     }
   }
