@@ -1,25 +1,44 @@
-import { tvmaze } from 'tvmaze-zucchinidev'
+import { HttpService } from './HttpService'
+const env = process.env
 
 export class TVMazeApiService {
-  static parseResponse ({body}) {
-    return body
+  static endPoints = {
+    search: '/search',
+    shows: '/shows',
+    show: '/show'
   }
 
-  constructor (tvmazeClient = tvmaze.createClient()) {
-    this.client = tvmazeClient
+  static get configuration () {
+    return {
+      baseURL: env.API_URL
+      // add here the default configuration, interceptors, etc
+    }
   }
 
-  searchShows (criteria) {
-    return this.client.search(criteria)
-      .then(TVMazeApiService.parseResponse)
-      .then(shows => shows.filter(s => s.show.image !== null).map(s => s.show))
+  static all (requests) {
+    return HttpService.all(requests)
   }
 
-  getShow (showId) {
-    return this.client.show(showId).then(TVMazeApiService.parseResponse)
+  static get http () {
+    return HttpService
   }
 
-  shows () {
-    return this.client.shows().then(TVMazeApiService.parseResponse)
+  static searchShows (criteria) {
+    const params = {q: criteria}
+    const endPoint = TVMazeApiService.endPoints.search
+    return TVMazeApiService.get(endPoint, params)
+  }
+
+  static getShow (showId) {
+    return TVMazeApiService.get(`${TVMazeApiService.endPoints.show}/${showId}`)
+  }
+
+  static getShows () {
+    return TVMazeApiService.get(TVMazeApiService.endPoints.shows)
+  }
+
+  static get (endPoint, params = {}) {
+    return TVMazeApiService.http.get(endPoint, params, TVMazeApiService.configuration)
+      .then(response => response.data)
   }
 }
