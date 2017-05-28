@@ -1,6 +1,6 @@
 import { TVMazeApiService } from '../../services'
-export const getShows = ({commit}) => {
-  TVMazeApiService.getShows().then(response => {
-    commit('setShows', response)
+export const getShow = ({commit}, id) => {
+  TVMazeApiService.getShow(id).then(response => {
+    commit('setCurrentShow', response)
   })
 }
