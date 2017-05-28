@@ -5,6 +5,8 @@ import NotFound from '../components/NotFound/NotFound'
 import ShowContainer from '../containers/ShowContainer'
 import ShowListContainer from '../containers/ShowListContainer'
 import GoToDashboard from '../components/GoToDashboard/GoToDashboard'
+import Login from '../components/Login/Login'
+import { AuthService } from '../services'
 
 Vue.use(Router)
 
@@ -13,6 +15,7 @@ export default new Router({
     {
       path: '/',
       component: Dashboard,
+      beforeEnter: AuthService.requireAuth,
       children: [
         {
           path: '',
@@ -43,6 +46,10 @@ export default new Router({
       path: '/not-found',
       name: '404',
       component: NotFound
+    },
+    {
+      path: '/login',
+      component: Login
     },
     {
       path: '*',
