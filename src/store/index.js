@@ -22,7 +22,9 @@ const state = {
   device: {
     isMobile: false,
     isTablet: false
-  }
+  },
+  shows: [],
+  show: null
 }
 
 export default new Vuex.Store({
