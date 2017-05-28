@@ -1,7 +1,7 @@
 <template>
   <article>
     <figure>
-      <router-link :to="{name: 'show', params: {showId: show.id}}">
+      <router-link :to="{name: 'show', params: {showId: show.showId}}">
         <img v-cloak :src="show.image.medium" :alt="show.name">
       </router-link>
       <figcaption>
