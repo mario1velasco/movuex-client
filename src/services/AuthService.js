@@ -1,7 +1,25 @@
+import { HttpService } from './HttpService'
+const env = process.env
+
 export class AuthService {
+  static get configuration () {
+    return {
+      baseURL: env.SERVER_URL
+      // add here the default configuration, interceptors, etc
+    }
+  }
+
+  static get http () {
+    return HttpService
+  }
 
   static isAuthorizedUser () {
     return Promise.resolve(true)
+    // if (env.NODE_ENV === env.DEVELOPMENT) {
+    //   return Promise.resolve(true)
+    // } else {
+    //   // TODO
+    // }
   }
 
   static requireAuth (to, from, next) {
@@ -14,5 +32,9 @@ export class AuthService {
         next()
       }
     })
+  }
+
+  static socialLogin () {
+    return AuthService.http.get('/auth/twitter', {}, AuthService.configuration)
   }
 }
