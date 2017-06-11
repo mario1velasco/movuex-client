@@ -2,12 +2,12 @@
 @import '~bulma/sass/utilities/mixins';
 
 .app-sidebar {
-  text-align: center;
+  text-align: left;
   position: fixed;
   top: 50px;
   left: 0;
   bottom: 0;
-  padding: 20px 0 50px;
+  padding: 20px 0 50px 10px;
   width: 180px;
   min-width: 45px;
   max-height: 100vh;

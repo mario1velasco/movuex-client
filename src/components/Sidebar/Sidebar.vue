@@ -32,7 +32,7 @@
         </expanding>
       </li>
     </ul>
-    <history></history>
+    <history :currentShow="currentShow"></history>
     <social-sidebar></social-sidebar>
   </aside>
 </template>
@@ -55,7 +55,8 @@
       menuItems: {
         required: true,
         type: Array
-      }
+      },
+      currentShow: Object
     },
 
     data () {
