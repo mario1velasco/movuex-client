@@ -20,9 +20,14 @@ export class HttpService {
   }
 
   static post (url, params, config) {
-    params = HttpService.getMergedParams(params)
     return axios
-      .post(url, params, config)
+      .post(url, params, HttpService.getConfiguration(config))
+      .then(HttpService.format)
+  }
+
+  static patch (url, params, config) {
+    return axios
+      .patch(url, params, HttpService.getConfiguration(config))
       .then(HttpService.format)
   }
 
