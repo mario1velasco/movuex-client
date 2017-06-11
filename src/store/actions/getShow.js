@@ -1,6 +1,6 @@
-import { TVMazeApiService } from '../../services'
+import { ShowsService } from '../../services'
 export const getShow = ({commit}, id) => {
-  TVMazeApiService.getShow(id).then(response => {
+  ShowsService.getShow(id).then(response => {
     commit('setCurrentShow', response)
   })
 }
