@@ -1,35 +1,24 @@
+import Vue from 'vue'
 import socketio from 'socket.io-client'
 
-const singleton = Symbol()
-const secureSingleton = Symbol()
-
 export class RealTimeService {
-
-  /**
-   * Singleton instance
-   * @returns {RealTimeService}
-   */
-  static getInstance (params) {
-    if (!this[singleton]) {
-      this[singleton] = new RealTimeService(secureSingleton, params)
-    }
-    return this[singleton]
+  constructor () {
+    const url = Vue.config.ENV.SERVER_URL
+    this.socket = socketio(url)
   }
 
-  constructor (securize, params) {
-    if (securize !== secureSingleton) {
-      throw new Error('Cannot construct a singleton')
-    }
-    this.socket = socketio(params.realTimeUrl)
+  addComment (data) {
+    this.socket.emit('addComment', data)
   }
 
-  addVote (showId) {
-    this.socket.emit('addVote', showId)
+  joinChatRoom (showId) {
+    console.log(`show-id-${showId}`)
+    this.socket.emit('join', `show-id-${showId}`)
   }
 
-  onAddedVote () {
+  onJoinChatRoom () {
     return new Promise((resolve, reject) => {
-      this.socket.on('vote:added', (data) => {
+      this.socket.on('room:joined', (data) => {
         resolve(data)
       })
     })
