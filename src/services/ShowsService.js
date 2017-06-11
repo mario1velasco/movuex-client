@@ -1,11 +1,12 @@
 import { HttpService } from './HttpService'
 const env = process.env
 
-export class TVMazeApiService {
+export class ShowsService {
   static endPoints = {
-    search: '/search',
+    search: '/shows/search',
     shows: '/shows',
-    show: '/show'
+    votes: '/shows/votes',
+    notes: '/shows/notes'
   }
 
   static get configuration () {
@@ -24,21 +25,44 @@ export class TVMazeApiService {
   }
 
   static searchShows (criteria) {
-    const params = {q: criteria}
-    const endPoint = TVMazeApiService.endPoints.search
-    return TVMazeApiService.get(endPoint, params)
+    if (criteria !== '') {
+      const params = {q: criteria}
+      const endPoint = ShowsService.endPoints.search
+      return ShowsService.get(endPoint, params)
+    } else {
+      return ShowsService.getShows()
+    }
   }
 
   static getShow (showId) {
-    return TVMazeApiService.get(`${TVMazeApiService.endPoints.show}/${showId}`)
+    return ShowsService.get(`${ShowsService.endPoints.shows}/${showId}`)
   }
 
   static getShows () {
-    return TVMazeApiService.get(TVMazeApiService.endPoints.shows)
+    return ShowsService.get(ShowsService.endPoints.shows)
+  }
+
+  static addVote (showId) {
+    const endPoint = `${ShowsService.endPoints.votes}/${showId}`
+    return ShowsService
+      .patch(endPoint)
+  }
+
+  static addNote (showId, note) {
+    const endPoint = `${ShowsService.endPoints.notes}/${showId}`
+    return ShowsService
+      .patch(endPoint, note)
+  }
+
+  static patch (endPoint, params = {}) {
+    return ShowsService
+      .http
+      .patch(endPoint, params, ShowsService.configuration)
+      .then(({data}) => data)
   }
 
   static get (endPoint, params = {}) {
-    return TVMazeApiService.http.get(endPoint, params, TVMazeApiService.configuration)
-      .then(response => response.data)
+    return ShowsService.http.get(endPoint, params, ShowsService.configuration)
+      .then(({data}) => data)
   }
 }
