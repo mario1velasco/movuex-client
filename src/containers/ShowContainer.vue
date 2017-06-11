@@ -2,6 +2,8 @@
   <show
     :show="show"
     v-if="show"
+    @addNote="onAddNote"
+    @vote="onVote"
   ></show>
 </template>
 
@@ -23,8 +25,18 @@
     },
     methods: {
       ...mapActions([
-        'getShow'
-      ])
+        'getShow',
+        'addVote',
+        'addNote'
+      ]),
+      onVote () {
+        this.addVote(this.show)
+      },
+      onAddNote (text) {
+        const note = {text, user: '@zucchinidev'}
+        const { showId } = this.show
+        this.addNote('addNote', {note, showId})
+      }
     },
     created () {
       this.getShow(this.showId)
