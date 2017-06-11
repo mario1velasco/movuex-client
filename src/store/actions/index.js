@@ -1,4 +1,7 @@
 export { addVote } from './addVote'
 export { getShows } from './getShows'
-export { searchShows } from './searchShows'
 export { getShow } from './getShow'
+export { searchShows } from './searchShows'
+export { socialLogin } from './socialLogin'
+export { addComment } from './addComment'
+export { addNote } from './addNote'
