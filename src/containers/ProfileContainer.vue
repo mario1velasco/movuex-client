@@ -1,33 +1,14 @@
 <template>
-  <show
-    :show="show"
-    v-if="show"
-  ></show>
+  <div>
+    profile
+  </div>
 </template>
 
 <script>
-  import Show from '../components/Show/Show'
-  import { mapActions, mapState } from 'vuex'
   export default {
-    components: {Show},
-    name: 'ShowContainer',
-    props: {
-      showId: {
-        require: true
-      }
-    },
-    computed: {
-      ...mapState([
-        'show'
-      ])
-    },
-    methods: {
-      ...mapActions([
-        'getShow'
-      ])
-    },
+    name: 'ProfileContainer',
     created () {
-      this.getShow(this.showId)
+      console.log('profile')
     }
   }
 </script>

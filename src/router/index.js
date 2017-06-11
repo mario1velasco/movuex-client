@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Dashboard from '../components/Dashboard/Dashboard'
 import NotFound from '../components/NotFound/NotFound'
 import ShowContainer from '../containers/ShowContainer'
+import ProfileContainer from '../containers/ProfileContainer'
 import ShowListContainer from '../containers/ShowListContainer'
 import GoToDashboard from '../components/GoToDashboard/GoToDashboard'
 import Login from '../components/Login/Login'
@@ -11,6 +12,7 @@ import { AuthService } from '../services'
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -39,6 +41,11 @@ export default new Router({
               console.log(route)
             }
           }
+        },
+        {
+          path: '/user/profile',
+          name: 'user-profile',
+          components: ProfileContainer
         }
       ]
     },
