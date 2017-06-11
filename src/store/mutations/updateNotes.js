@@ -1,3 +1,3 @@
-export const showVotes = (state, votes) => {
-  state.show = state.show.votes = votes
+export const updateNotes = (state, notes) => {
+  state.show = state.show.notes = notes
 }
