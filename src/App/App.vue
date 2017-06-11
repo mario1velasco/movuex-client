@@ -4,6 +4,7 @@
     <sidebar
       :show="sidebar.opened"
       :menuItems="menuItems"
+      :currentShow="currentShow"
     ></sidebar>
     <app-main></app-main>
     <footer-bar></footer-bar>
@@ -28,7 +29,8 @@
     computed: {
       ...mapState({
         menuItems: state => state.menuItems,
-        sidebar: state => state.sidebar
+        sidebar: state => state.sidebar,
+        currentShow: state => state.show
       })
     },
     methods: {
