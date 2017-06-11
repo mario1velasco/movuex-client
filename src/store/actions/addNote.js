@@ -1,8 +1,8 @@
 import { ShowsService } from '../../services'
-export const addVote = ({commit}, {showId}) => {
+export const addNote = ({commit}, {note, showId}) => {
   ShowsService
-    .addVote(showId)
-    .then(({data}) => {
-      commit('showVotes', data)
+    .addNote(showId, note)
+    .then(data => {
+      commit('updateNotes', data)
     })
 }
