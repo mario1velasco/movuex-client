@@ -6,7 +6,7 @@
 
 <script>
   import ShowList from '../components/ShowList/ShowList'
-  import { mapActions, mapState } from 'vuex'
+  import { mapActions, mapState, mapMutations } from 'vuex'
 
   export default {
     components: {
@@ -39,8 +39,12 @@
         'getShows',
         'searchShows'
       ]),
+      ...mapMutations([
+        'resetCurrentShow'
+      ]),
       initShows () {
         this.getShows()
+        this.resetCurrentShow()
       }
     }
   }
