@@ -1,11 +1,14 @@
 <template>
   <div class="box">
-    <article class="media">
+    <article class="media" v-if="show">
       <div class="media-left">
         <show-figure :show="show"></show-figure>
       </div>
       <div class="media-content">
-        <show-content @vote="onVote" :show="show"></show-content>
+        <show-content @addNote="onAddNote"
+                      @vote="onVote"
+                      :show="show"
+        ></show-content>
       </div>
     </article>
     <show-not-found v-if="!show"></show-not-found>
@@ -19,7 +22,6 @@
   import ShowFigure from './ShowFigure/ShowFigure'
   import ShowNotFound from './ShowNotFound/ShowNotFound'
   import { mapActions } from 'vuex'
-  import { RealTimeService } from '../../services/'
 
   export default {
     components: {
@@ -40,15 +42,11 @@
         'addVote'
       ]),
       onVote () {
-        this.addVote(this.show)
+        this.$emit('addVote')
       },
-      initSocket () {
-        const service = RealTimeService.getInstance()
-        service.onAddedVote().then(_ => console.log(_))
+      onAddNote (note) {
+        this.$emit('addNote', note)
       }
-    },
-    created () {
-      this.initSocket()
     }
   }
 </script>
