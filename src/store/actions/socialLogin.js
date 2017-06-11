@@ -1,5 +1,6 @@
-import { RealTimeService } from '../../services'
-export const addVote = ({commit}, {showId}) => {
-  const service = RealTimeService.getInstance()
-  service.addVote(showId)
+import { AuthService } from '../../services'
+export const socialLogin = ({commit}) => {
+  AuthService.socialLogin().then(r => {
+    console.log(r)
+  })
 }
