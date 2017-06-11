@@ -10,4 +10,14 @@
   .no-results {
     font-size: .9rem;
   }
+
+  [contenteditable="true"] {
+    outline: 1px solid #00d1b2;
+    height: 30px;
+    cursor: pointer;
+    &:hover {
+      outline: 1px dashed #00d1b2;
+    }
+  }
+
 }
