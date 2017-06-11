@@ -1,0 +1,40 @@
+.card {
+  width: auto;
+  ul {
+    list-style: none;
+    margin: 0;
+    max-height: 150px;
+    overflow-y: auto;
+    padding-bottom: 30px;
+  }
+}
+
+.editor {
+  margin-top: 2rem;
+  .editor-section {
+    > div {
+      display: inline-block;
+      &.user {
+        width: 15%;
+      }
+      &.msg {
+        width: 60%;
+      }
+      &.content-editable{
+        height: 30px;
+        outline: 1px solid #00d1b2;
+        cursor: pointer;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        &:hover {
+          outline: 1px dashed #00d1b2;
+        }
+      }
+
+      .button {
+        display: inline-block;
+        width: 10%;
+      }
+    }
+  }
+}
