@@ -1,14 +1,23 @@
 <template>
   <div class="not-found">
-    <a href="http://localhost:3000/api/user/twitter">
+    <a href="/user/twitter">
       Twitter
     </a>
   </div>
 </template>
 
 <script>
+  import { mapActions } from 'vuex'
   export default {
-    name: 'Login'
+    name: 'Login',
+    methods: {
+      ...mapActions([
+        'socialLogin'
+      ]),
+      onClickTwitter () {
+        this.socialLogin()
+      }
+    }
   }
 </script>
 
