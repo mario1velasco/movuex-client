@@ -9,7 +9,14 @@ const state = {
   menuItems: [
     {
       name: 'Dashboard',
-      path: '/dashboard',
+      path: '/',
+      meta: {
+        icon: 'fa-tachometer'
+      }
+    },
+    {
+      name: 'Login',
+      path: '/login',
       meta: {
         icon: 'fa-tachometer'
       }
