@@ -1,5 +1,5 @@
 import { RealTimeService } from '../../services'
-export const addVote = ({commit}, {showId}) => {
-  const service = RealTimeService.getInstance()
-  service.addVote(showId)
+export const addComment = ({commit}, data) => {
+  const service = new RealTimeService()
+  service.addComment(data)
 }
