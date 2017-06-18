@@ -41,6 +41,7 @@
   import Expanding from 'vue-bulma-expanding'
   import History from '../History/History'
   import SocialSidebar from './SocialSidebar/SocialSidebar'
+  import { mapActions } from 'vuex'
 
   export default {
     name: 'sidebar',
@@ -74,6 +75,7 @@
     },
 
     methods: {
+      ...mapActions(['expandMenu']),
       isExpanded (item) {
         return item.meta.expanded
       },
