@@ -12,7 +12,6 @@ export class RealTimeService {
   }
 
   joinChatRoom (showId) {
-    console.log(`show-id-${showId}`)
     this.socket.emit('join', `show-id-${showId}`)
   }
 
