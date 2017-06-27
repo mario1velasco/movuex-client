@@ -15,11 +15,6 @@ export class AuthService {
 
   static isAuthorizedUser () {
     return Promise.resolve(true)
-    // if (env.NODE_ENV === env.DEVELOPMENT) {
-    //   return Promise.resolve(true)
-    // } else {
-    //   // TODO
-    // }
   }
 
   static requireAuth (to, from, next) {
